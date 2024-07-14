@@ -6,8 +6,8 @@ const router = express.Router();
 // Route to add a new product
 router.post("/add", async (req, res) => {
   try {
-    const { id, name, description, price, category, stock } = req.body;
-    const newProduct = new Product({ id,name, description, price, category, stock });
+    const { id, name,sellerName, description,count, price, category, photo } = req.body;
+    const newProduct = new Product({ id,name,sellerName, description,count, price, category, photo });
     const savedProduct = await newProduct.save();
     res.status(201).json(savedProduct);
   } catch (err) {
@@ -39,7 +39,7 @@ router.get("/:id", async (req, res) => {
 // Route to update a product
 router.put("/:id", async (req, res) => {
   try {
-    const { id, name, description, price, category, stock } = req.body;
+    const { id,name,sellerName, description,count, price, category, photo} = req.body;
     const updatedProduct = await Product.findByIdAndUpdate(
       req.params.id,
       { name, description, price, category, stock },
