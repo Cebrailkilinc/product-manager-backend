@@ -23,6 +23,11 @@ app.use(express.json())
 // MongoDB connection
 connectDB();
 
+
+app.get("/", (res,req)=>{
+  res.status(200).json("products");
+})
+
 app.use("/product", productRoutes)
 
 // Start the server
