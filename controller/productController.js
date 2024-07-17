@@ -39,10 +39,10 @@ router.get("/:id", async (req, res) => {
 // Route to update a product
 router.put("/:id", async (req, res) => {
   try {
-    const { id,name,sellerName, description,count, price, category, photo} = req.body;
+    const { name, sellerName, description, count, price, category, photo } = req.body;
     const updatedProduct = await Product.findByIdAndUpdate(
       req.params.id,
-      { name, description, price, category, stock },
+      { name, sellerName, description, count, price, category, photo },
       { new: true }
     );
     if (!updatedProduct) return res.status(404).json({ message: "Product not found" });
@@ -51,6 +51,7 @@ router.put("/:id", async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
+
 
 // Route to delete a product
 router.delete("/:id", async (req, res) => {

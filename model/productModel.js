@@ -3,8 +3,8 @@ import mongoose from 'mongoose';
 const productSchema = new mongoose.Schema({
     id: {
         type: String,
-        required: false,
-        unique: false
+        required: true,
+        unique: true
     },
     name: {
         type: String,
@@ -28,13 +28,12 @@ const productSchema = new mongoose.Schema({
     },
     category: {
         type: String,
-        required: false,
+        required: true,
     },
     photo: {
         type: String,
         required:true
     }
-
 });
 
 const Product = mongoose.model('Product', productSchema);
