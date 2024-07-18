@@ -25,15 +25,14 @@ app.use(express.static('public'))
 connectDB();
 
 
-app.get("/", (req, res) => {
+app.get("/", async (req, res) => {
   try {
-    const products = Product.find();
+    const products = await Product.find(); // Asenkron sorgu
     res.status(200).json(products);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 });
-
 
 app.use("/", productRoutes)
 
