@@ -4,6 +4,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import { connectDB } from "./config/db.js";
 import productRoutes from "./controller/productController.js"
+import Product from "./model/productModel.js";
 
 // Environment variables
 dotenv.config();
@@ -23,6 +24,15 @@ app.use(express.static('public'))
 // MongoDB connection
 connectDB();
 
+
+app.get("/", (req, res) => {
+  try {
+    const products = Product.find();
+    res.status(200).json(products);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
 
 
 app.use("/", productRoutes)
