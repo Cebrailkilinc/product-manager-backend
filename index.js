@@ -24,10 +24,6 @@ app.use(express.static('public'))
 connectDB();
 
 
-app.get("/", (req, res) => {
-  res.status(200).json("products");
-});
-
 
 app.use("/", productRoutes)
 
