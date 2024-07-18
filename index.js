@@ -29,7 +29,7 @@ app.get("/", (req, res) => {
 });
 
 
-app.use("/product", productRoutes)
+app.use("/", productRoutes)
 
 // Start the server
 app.listen(port, () => {
