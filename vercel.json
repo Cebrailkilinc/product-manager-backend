@@ -8,7 +8,7 @@
   ],
   "routes": [
     {
-      "src": "/(.*)",
+      "src": "product/(.*)",
       "dest": "dist/index.js"
     }
   ]
